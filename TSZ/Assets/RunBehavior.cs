@@ -17,7 +17,19 @@ public class RunBehavior : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        //TODO : ajouter une vérification pour ne pas activer le trigger 2 fois de suite
+        /*
+         * Attention ! Ici les lignes suivantes ne posent pas de soucis parce que la transition engendrée par le trigger
+         * est instantannée !
+         * 
+         * Si la transition devait durer, ce state ne finirait qu'à la fin de la transition, et donc ...
+         * Le trigger se réactiverait ! Car il aura été consommé une première fois pour lancer la transition
+         * Et donc réactivé à la frame suivante ...
+         * 
+         * Certaines personnes diront que c'est ici plus pratique d'utiliser des booléens.
+         * 
+         * Une règle ? Il faut faire gaffe aux inputs et aux triggers.
+         * 
+         */
 
         if (Input.GetButton("Fire1"))
         {
