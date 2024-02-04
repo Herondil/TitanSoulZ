@@ -31,10 +31,12 @@ public class eightDir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //booléen pour autorise ou non le mouvement
         if (controllable)
         {
             direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         }
+        //la direction est dépendante des inputs
         if (direction.magnitude > 0)
         {
             _nmtr.SetFloat("DirX", direction.x);
@@ -42,6 +44,7 @@ public class eightDir : MonoBehaviour
             _nmtr.SetBool("isMoving", true);
 
             //clamp 
+            //normaliser le vecteur orientation
             orientation = Vector2.ClampMagnitude(direction * 10000f, 1f);
         }
         else
